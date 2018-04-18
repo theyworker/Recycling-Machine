@@ -141,8 +141,6 @@ public class StatsHub {
 	   
 	        sc.close();
 
-	        System.out.println("Receipts:"+receipts);
-	        System.out.println("num of items:"+numofitems);
 
 	        
 	    } 
@@ -155,7 +153,7 @@ public class StatsHub {
 	
 	public static String printStat() 
 	{
-		return ("Total Number of Receipts: "+receipts+"\nTotal Number of items: "+numofitems+"\nTotal number of Screen Clears: "+numofclr+"\nTotal number of Undos: "+numofundo+"\nTotal Number of time-outs: "+autoResets+"\n Total Resets by an Engineer: "+EngResets+"\nTotal Weight deposited: "+totalWeightDeposited+"\nTotal Size deposited: "+totalSizeDeposited);
+		return ("Total Number of Receipts: "+receipts+"\nTotal Number of items: "+numofitems+"\nTotal Number of Screen Clears: "+numofclr+"\nTotal Number of Undos: "+numofundo+"\nTotal Number of time-outs: "+autoResets+"\nTotal Resets by an Engineer: "+EngResets+"\nTotal Weight deposited: "+totalWeightDeposited+"\nTotal Size deposited: "+totalSizeDeposited);
 	}
 	
 

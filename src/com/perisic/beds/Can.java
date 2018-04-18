@@ -6,8 +6,8 @@ package com.perisic.beds;
  */
 public class Can extends DepositItem {
 	static int weight = 4; 
-	static int size = 5; 
-
+	static int size = 5;
+	
 	/**
 	 * @author devaka
 	 * This is Can class, a sub-class of Deposit Item

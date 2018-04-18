@@ -36,6 +36,9 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	static JProgressBar pbw;
 	static JProgressBar pbsz;
 	
+	static JLabel currentvaltxt = new JLabel("£ 0.0");
+	static int currentVal = 0;
+	
 	 //timer
 	
 	static int secs = 0; //seconds passed
@@ -56,11 +59,21 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 				thepanel.receiver.clearReceipt();
 				StatsHub.AddautoResetsStats();
 				JT.setText(WelcomeMessage.getGreeting());
+				resetFunctions();
 				}
-			pbw.setValue((int) thepanel.getTW());
-			pbsz.setValue((int) thepanel.getTS());
+			
 		}
 	};
+	
+	
+	public void resetFunctions() 
+	{
+		pbw.setValue((int) thepanel.getTW());
+		pbsz.setValue((int) thepanel.getTS());
+		
+		currentVal = 0;
+		currentvaltxt.setText("£ "+currentVal);
+	}
 	
 	public static void resetTimer() {
 		secs = 0;
@@ -76,6 +89,12 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	public void print(String str)
 	{
 		JT.setText(str);
+	}
+	
+	static void updateCurrentVal(int change) 
+	{
+		currentVal += change;
+		currentvaltxt.setText("£ "+currentVal);
 	}
 	/**
 	 * This function will perform actions on the customer panel object depending on the button.
@@ -117,6 +136,7 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		panel.add(clr);
 		panel.add(rmvlast);
 		panel.add(settings);
+		panel.add(currentvaltxt);
 		
 		Font fnt = new Font("Arial", Font.PLAIN, 20);
 		
@@ -200,24 +220,27 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		JT.setEditable(false);
 		JT.setFocusable(false);
 		
+		currentvaltxt.setFont(new Font("Arial", Font.BOLD, 22));
+		currentvaltxt.setBounds(205, 270, 200, 60);
+		
 		JLabel pbwlbl = new JLabel("Weight");//Labels for the progress bars
 		pbwlbl.setFont(new Font("Arial", Font.PLAIN, 20));
-		pbwlbl.setBounds(117, 240, 100, 100);
+		pbwlbl.setBounds(117, 290, 100, 100);
 		
 		JLabel pbslbl = new JLabel("Size");
 		pbslbl.setFont(new Font("Arial", Font.PLAIN, 20));
-		pbslbl.setBounds(320, 240, 100, 100);
+		pbslbl.setBounds(320, 290, 100, 100);
 		
 		
 		pbw = new JProgressBar(0,1520); //progress bar for weight against total capasity
 		pbw.setValue(0);
 		pbw.setStringPainted(true);
-		pbw.setBounds(65, 310, 180, 20);
+		pbw.setBounds(65, 360, 180, 20);
 		
 		pbsz = new JProgressBar(0,1000);
 		pbsz.setValue(0);
 		pbsz.setStringPainted(true);
-		pbsz.setBounds(250,310, 180, 20);
+		pbsz.setBounds(250,360, 180, 20);
 		
 		
 		slot1.addActionListener(RGUIA); 
@@ -256,18 +279,18 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	 * This is the main  method with GUI object
 	 * @param args
 	 */
-	public void runClient() {
-		try {
-			   XmlRpcClient server = new XmlRpcClient("http://localHost:1200/RPC2"); 
-			   Vector<String> params = new Vector<String>();
-			   params.add("Colombo 3");
-			   Object result = server.execute("hello.newConnection", params);
-			   System.out.println("Result from Server: "+result.toString());
-			   
-			  } catch (Exception ex) {
-			   System.err.println("HelloClient: " + ex);
-			   }
-	}
+//	public void runClient() {
+//		try {
+//			   XmlRpcClient server = new XmlRpcClient("http://localHost:1200/RPC2"); 
+//			   Vector<String> params = new Vector<String>();
+//			   params.add("Colombo 3");
+//			   Object result = server.execute("hello.newConnection", params);
+//			   System.out.println("Result from Server: "+result.toString());
+//			   
+//			  } catch (Exception ex) {
+//			   System.err.println("HelloClient: " + ex);
+//			   }
+//	}
 	
 	public void runServer(Object gui) {
 		WebServer server = new WebServer(webserver);

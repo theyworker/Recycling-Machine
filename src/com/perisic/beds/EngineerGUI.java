@@ -73,6 +73,7 @@ public class EngineerGUI extends JFrame implements ActionListener {
 			RGG.thepanel.receiver.clearReceipt();
 			StatsHub.AddEngResetsStat();
 			ConsoleLog.printlog("Recycling Machine was Emptied by Engineer-"+currentUser);
+			EngTA.setText("The Recycling Machine was emptied sucessfully");
 		}
 		else if(e.getSource().equals(Stats))
 		{

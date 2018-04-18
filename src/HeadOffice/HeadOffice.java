@@ -3,22 +3,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Vector;
-
-
 import org.apache.xmlrpc.*;
 
 public class HeadOffice implements ActionListener {
+	
 	int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag;
 	HeadOfficeGUI HOGUI;
-	String  url = "http://localHost:1300/RPC2";
-	String sessioncookie="not set";
-	static int psswrdsvr = 1600;
-	static int Lgsvr = 1610;
-	public void runServer() {
-		WebServer server = new WebServer(1200);
-	  	 server.addHandler("hello", new HeadOffice());
-	   	 server.start();
-	}
+	String  RMurl = "http://localHost:1300/RPC2";
+	//String sessioncookie="not set";
+
+	
 	
 	public String newConnection(String place) {
 		//HOGUI.JTA.setText("Recycling Machine Connected from "+place);
@@ -26,22 +20,17 @@ public class HeadOffice implements ActionListener {
 		return "Connected.";
 	}
 	
-	public static void psswrdServer() 
-	{
-		WebServer server = new WebServer(psswrdsvr);
-	  	 server.addHandler("passwordmanager", new PasswordManager());
-	   	 server.start();
-	}
-	
 	
 	public static void startServers()
 	{
-		psswrdServer();
+		ServerManager SvrMng = new ServerManager();
+		SvrMng.psswrdServer();
+		SvrMng.runServer();
 	}
 	
 	public void terminateClient() {
 		try {
-			   XmlRpcClient server = new XmlRpcClient(url); 
+			   XmlRpcClient server = new XmlRpcClient(RMurl); 
 			   Vector<String> params = new Vector<String>();
 			   server.execute("machine.restartMachine", params);
 			   
@@ -58,7 +47,7 @@ public class HeadOffice implements ActionListener {
 	
 	public void clearReceiptClient() {
 		try {
-			   XmlRpcClient server = new XmlRpcClient(url); 
+			   XmlRpcClient server = new XmlRpcClient(RMurl); 
 			   Vector<String> params = new Vector<String>();
 			   Object result = server.execute("machine.clearScreenRemotely", params);
 			   System.out.println("Result from Server: "+result.toString());
@@ -71,7 +60,7 @@ public class HeadOffice implements ActionListener {
 	
 	public void getNumofItemsClient() {
 		try {
-			   XmlRpcClient server = new XmlRpcClient(url); 
+			   XmlRpcClient server = new XmlRpcClient(RMurl); 
 			   Vector<String> params = new Vector<String>();
 			   Object result = server.execute("machine.getNumofItems", params);
 			   System.out.println("The number of items in the machine:  "+result.toString());

@@ -16,4 +16,6 @@ public class Bag extends DepositItem {
 		value = 0; 
 		name = null;
 	}
+	
+	
 }

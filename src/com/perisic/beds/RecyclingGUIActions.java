@@ -78,6 +78,8 @@ public class RecyclingGUIActions implements ActionListener {
 			
 			StatsHub.AddtotalWeightDepositedStat(thepanel.getTW());
 			StatsHub.AddtotalSizeDepositeddStat(thepanel.getTS());
+			
+			RGUI.resetFunctions();
 		}
 		else if(e.getSource().equals(RecyclingGUI.clr))
 		{
@@ -87,6 +89,7 @@ public class RecyclingGUIActions implements ActionListener {
 			thepanel.receiver.clearReceipt();
 			StatsHub.AddNumClrStats();
 			
+			RGUI.resetFunctions();
 		}
 		
 		else if(e.getSource().equals(RecyclingGUI.rmvlast))

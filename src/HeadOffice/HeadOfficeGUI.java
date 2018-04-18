@@ -20,7 +20,7 @@ public class HeadOfficeGUI extends JFrame  {
 
 	public HeadOfficeGUI() {
 		super("Head Office");
-		HO.runServer();
+		//HO.runServer();
 		setSize(800, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		JPanel panel = new JPanel(); 

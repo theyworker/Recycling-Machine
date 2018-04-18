@@ -76,6 +76,7 @@ public class DepositItemReceiver {
 			createReceiptBasis(); 
 		}
 		theReceiptBasis.addItem(item); 
+		RecyclingGUI.updateCurrentVal(item.value);
 	}
 	/**
 	 * 
