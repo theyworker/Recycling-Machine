@@ -7,7 +7,7 @@ import org.apache.xmlrpc.*;
 
 public class HeadOffice implements ActionListener {
 	
-	int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag;
+	int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag, countPolythenebag;
 	HeadOfficeGUI HOGUI;
 	String  RMurl = "http://localHost:1300/RPC2";
 	//String sessioncookie="not set";
@@ -17,9 +17,17 @@ public class HeadOffice implements ActionListener {
 	public String newConnection(String place) {
 		//HOGUI.JTA.setText("Recycling Machine Connected from "+place);
 //		HeadOfficeGUI.JTA.setText(place+"is here!");
-		return "Connected.";
+		
+		return "connected";
 	}
 	
+	public void priceUpdation()
+	{
+		PricingManager PriceMng = new PricingManager();
+		PriceMng.getPrices();
+		PriceMng.sendPrices();
+		System.out.println("HO function");
+	}
 	
 	public static void startServers()
 	{
@@ -103,6 +111,12 @@ public class HeadOffice implements ActionListener {
 		{
 			CreateNewUserGUI cnu = new CreateNewUserGUI();
 			cnu.setVisible(true);
+		}
+		
+		else if(e.getSource().equals(HeadOfficeGUI.UpdatePriceBtn))
+		{
+			priceUpdation();
+			System.out.println("So the button was pressed");
 		}
 		
 		

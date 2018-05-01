@@ -1,5 +1,7 @@
 package com.perisic.beds;
 
+import com.perisic.beds.Pricing.CurrentPrices;
+
 /**
  * @author Marc Conrad
  *
@@ -18,10 +20,19 @@ public class Can extends DepositItem {
 //		} catch (Exception e) {
 //			ConsoleLog.printlog("Unable to get values from the server");
 //			e.printStackTrace();
-			value = 12;
+		
+		value = CurrentPrices.getCanPrice();
 		name = "Can";
 	
 		// }
 		
+		
 	}
+	
+	public void changeVal(int newVal)
+	{
+		value = newVal;
+	}
+	
+
 }

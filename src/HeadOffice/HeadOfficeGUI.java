@@ -16,6 +16,7 @@ public class HeadOfficeGUI extends JFrame  {
 	static JButton ClearReceipt = new JButton("Clear Current Receipt");
 	static JButton GetnoofItems = new JButton("Get Number of Items");
 	static JButton CreateUser = new JButton("Create a new user");
+	static JButton UpdatePriceBtn = new JButton("Update Prices");
 //	public static JTextArea JTA = new JTextArea(10,15);		
 
 	public HeadOfficeGUI() {
@@ -28,12 +29,14 @@ public class HeadOfficeGUI extends JFrame  {
 		panel.add(ClearReceipt);
 		panel.add(GetnoofItems);
 		panel.add(CreateUser);
+		panel.add(UpdatePriceBtn);
 	
 //		panel.add(JTA);
 		turnoff.addActionListener(HO);
 		ClearReceipt.addActionListener(HO);
 		GetnoofItems.addActionListener(HO);
 		CreateUser.addActionListener(HO);
+		UpdatePriceBtn.addActionListener(HO);
 		getContentPane().add(panel);
 		panel.repaint();
 	

@@ -9,6 +9,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import com.perisic.beds.Stats.StatsHub;
+
 
 /**
  * A Simple Graphical User Interface for the Engineer to clear the Recycling Machine.

@@ -1,4 +1,4 @@
-package com.perisic.beds;
+package com.perisic.beds.Stats;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -92,7 +92,6 @@ public class StatsHub {
 		try {
 			writer = new PrintWriter(new FileOutputStream(statFile));
 			
-			
 			writer.println(receipts);
 			writer.println(numofitems);
 			writer.println(numofclr);
@@ -108,6 +107,7 @@ public class StatsHub {
 			writer.println(totalWeightDeposited);
 			writer.println(totalSizeDeposited);
 			writer.close();
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

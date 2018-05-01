@@ -1,5 +1,7 @@
 package com.perisic.beds;
 
+import com.perisic.beds.Pricing.CurrentPrices;
+
 public class PolytheneBag extends Bag {
 	static int weight = 1; 
 	static int size = 2; 
@@ -13,7 +15,7 @@ public class PolytheneBag extends Bag {
 //		} catch (Exception e) {
 //			ConsoleLog.printlog("Unable to get values from the server");
 //			e.printStackTrace();
-			value = 1;
+			value = CurrentPrices.getPolythenebagPrice();
 	//	} 
 		name = "Polythene Bag";
 	}

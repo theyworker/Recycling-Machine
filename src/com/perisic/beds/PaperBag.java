@@ -1,5 +1,7 @@
 package com.perisic.beds;
 
+import com.perisic.beds.Pricing.CurrentPrices;
+
 /**
  * @author Marc Conrad
  *
@@ -17,7 +19,7 @@ public class PaperBag extends Bag {
 //		} catch (Exception e) {
 //			ConsoleLog.printlog("Unable to get values from the server");
 //			e.printStackTrace();
-			value = 5;
+			value = CurrentPrices.getPaperbagPrice();
 	//	} 
 		name = "Paper Bag";
 	}

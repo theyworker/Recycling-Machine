@@ -17,6 +17,9 @@ import javax.swing.JTextArea;
 import org.apache.xmlrpc.WebServer;
 import org.apache.xmlrpc.XmlRpcClient;
 
+import com.perisic.beds.Pricing.CurrentPrices;
+import com.perisic.beds.Stats.StatsHub;
+
 /**
  * A Simple Graphical User Interface for the Recycling Machine.
  * @author Marc Conrad
@@ -39,6 +42,10 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	static JLabel currentvaltxt = new JLabel("£ 0.0");
 	static int currentVal = 0;
 	
+	String location = "Colombo";
+	
+	
+	CurrentPrices Cp;
 	 //timer
 	
 	static int secs = 0; //seconds passed
@@ -101,7 +108,6 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	 * The console acts as a log with timestamps
 	 */
 	
-	
 
 	static JButton slot1 = new JButton("Can"); 
 	static JButton slot2 = new JButton("Crate"); 
@@ -118,11 +124,16 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	static ImageIcon imgIcon = new ImageIcon("img/settings1.png");
 	static JButton settings = new JButton("", imgIcon);
 	
+	static ImageIcon connectedIcon = new ImageIcon("img/cloud-computing.png");
+	static JLabel connectLbl = new JLabel(connectedIcon);
 	
-	public RecyclingGUI() {
+	
+	public RecyclingGUI(CurrentPrices CurrPrices) {
 		
 		super("Recycling Machine");
-		setSize(800, 400);
+		
+		Cp = CurrPrices;
+		setSize(800, 430);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);	
 		JPanel panel = new JPanel(); 
 		panel.setLayout(null);
@@ -136,10 +147,10 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		panel.add(clr);
 		panel.add(rmvlast);
 		panel.add(settings);
+		panel.add(connectLbl);
 		panel.add(currentvaltxt);
 		
 		Font fnt = new Font("Arial", Font.PLAIN, 20);
-		
 		
 		settings.setBackground(Color.WHITE);
 		settings.setToolTipText("Settings Menu");
@@ -148,6 +159,13 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		settings.setBounds(720, 10, 30, 30);
 		settings.setFocusable(false);
 		settings.setBorderPainted(false);
+		
+		
+		connectLbl.setBackground(Color.WHITE);
+		connectLbl.setToolTipText("Connected with Recycling Inc. Servers");
+		connectLbl.setForeground(Color.WHITE);
+		connectLbl.setFont(fnt);
+		connectLbl.setFocusable(false);
 		
 		
 		slot1.setBackground(new Color(102,153,204));
@@ -279,22 +297,28 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	 * This is the main  method with GUI object
 	 * @param args
 	 */
-//	public void runClient() {
-//		try {
-//			   XmlRpcClient server = new XmlRpcClient("http://localHost:1200/RPC2"); 
-//			   Vector<String> params = new Vector<String>();
-//			   params.add("Colombo 3");
-//			   Object result = server.execute("hello.newConnection", params);
-//			   System.out.println("Result from Server: "+result.toString());
-//			   
-//			  } catch (Exception ex) {
-//			   System.err.println("HelloClient: " + ex);
-//			   }
-//	}
+	public void runClient() {
+		try {
+			   XmlRpcClient server = new XmlRpcClient("http://localHost:1200/RPC2"); 
+			   Vector<String> params = new Vector<String>();
+			   params.add(location);
+			   Object result = server.execute("hello.newConnection", params);
+			   
+			   if(result.toString().equals("connected")) 
+			   {
+				   ConsoleLog.printlog("Connected with Recycling Inc. Server");
+				   connectLbl.setBounds(726, 400, 24, 24);
+				   
+			   }
+			   
+			  } catch (Exception ex) {
+			   }
+	}
 	
 	public void runServer(Object gui) {
 		WebServer server = new WebServer(webserver);
 	  	 server.addHandler("machine", gui);
+	  	 server.addHandler("pricing", Cp);
 	   	 server.start();
 	}
 	
@@ -305,7 +329,6 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 			return "System restarted!";
 		
 	}
-	
 	public String clearScreenRemotely()
 	{
 		
@@ -322,20 +345,29 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		
 	}
 	
+
+	
+	
 	
 	
 	public static void main(String [] args ) { 
-		RecyclingGUI myGUI = new RecyclingGUI(); 
+		final CurrentPrices Cp = new CurrentPrices();
+		RecyclingGUI myGUI = new RecyclingGUI(Cp);
+		Cp.loadPrices(); // load the last saved prices on the machine
+		
 		ConsoleLog.printlog("Recycling machine was turned on");
 		RecyclingGUI.JT.setText(WelcomeMessage.getGreeting());
 		myGUI.start();
 		myGUI.setVisible(true);
 		StatsHub.getStats();
+		myGUI.runClient();
+		
 		myGUI.runServer(myGUI);
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() { 
 			 public void run() {
 				 StatsHub.SaveStats();
+				 Cp.SavePrices();
 			 }
 		 }));
 	}

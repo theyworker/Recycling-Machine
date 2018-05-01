@@ -3,6 +3,8 @@ package com.perisic.beds;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import com.perisic.beds.Stats.StatsHub;
+
 /**
  * Functions as the Action Listener for the buttons in the Recycling GUI.
  * @author devaka
@@ -90,6 +92,7 @@ public class RecyclingGUIActions implements ActionListener {
 			StatsHub.AddNumClrStats();
 			
 			RGUI.resetFunctions();
+			
 		}
 		
 		else if(e.getSource().equals(RecyclingGUI.rmvlast))

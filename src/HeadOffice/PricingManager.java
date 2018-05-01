@@ -39,7 +39,7 @@ public class PricingManager {
 	        sc.close();
 
 
-	        System.out.println("Got the stuff"+Canvalue);
+	       // System.out.println("Got the stuff"+Canvalue);
 	    } 
 	    catch (FileNotFoundException e) {
 	        e.printStackTrace();
@@ -105,12 +105,12 @@ public class PricingManager {
 			   XmlRpcClient server = new XmlRpcClient("http://localHost:1300/RPC2"); 
 			   Vector<String> params = new Vector<String>();
 			   params.add(Integer.toString(Canvalue));
-//			   params.add(Integer.toString(Cratevalue));
-//			   params.add(Integer.toString(PolytheneBagvalue));
-//			   params.add(Integer.toString(PaperBagvalue));
-//			   params.add(Integer.toString(PlasticBottlevalue));
-//			   params.add(Integer.toString(GlassBottlevalue));
-			   Object result = server.execute("machine.updatePrices", params);
+			   params.add(Integer.toString(Cratevalue));
+			   params.add(Integer.toString(PolytheneBagvalue));
+			   params.add(Integer.toString(PaperBagvalue));
+			   params.add(Integer.toString(PlasticBottlevalue));
+			   params.add(Integer.toString(GlassBottlevalue));
+			   Object result = server.execute("pricing.updatePrices", params);
 
 		        System.out.println("Sending the prices22"+result.toString());
 			   System.out.println(result.toString());

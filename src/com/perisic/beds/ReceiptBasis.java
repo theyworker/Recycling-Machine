@@ -1,5 +1,7 @@
 package com.perisic.beds;
-import java.util.Vector; 
+import java.util.Vector;
+
+import com.perisic.beds.Stats.StatsHub; 
 
 /**
  * @author Marc Conrad

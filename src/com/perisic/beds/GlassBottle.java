@@ -1,5 +1,7 @@
 package com.perisic.beds;
 
+import com.perisic.beds.Pricing.CurrentPrices;
+
 public class GlassBottle extends Bottle {
 
 	static int weight = 10; 
@@ -14,7 +16,7 @@ public class GlassBottle extends Bottle {
 //		} catch (Exception e) {
 //			ConsoleLog.printlog("Unable to get values from the server");
 //			e.printStackTrace();
-			value = 2;
+			value = CurrentPrices.getGlassbottlePrice();
 		// }
 		name = "Glass Bottle";
 	}

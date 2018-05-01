@@ -1,5 +1,7 @@
 package com.perisic.beds;
 
+import com.perisic.beds.Pricing.CurrentPrices;
+
 /**
  * @author Marc Conrad
  *
@@ -16,7 +18,7 @@ public class Crate extends DepositItem {
 //		} catch (Exception e) {
 //			ConsoleLog.printlog("Unable to get values from the server");
 //			e.printStackTrace();
-			value = 25;
+			value = CurrentPrices.getCratePrice();
 		// }
 		name = "Crate";
 	}

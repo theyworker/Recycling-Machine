@@ -1,5 +1,7 @@
 package com.perisic.beds;
 
+import com.perisic.beds.Stats.StatsHub;
+
 /**
  * @author Marc Conrad
  *
@@ -91,6 +93,8 @@ public class DepositItemReceiver {
 		Printer1.print(str); 
 		clearReceipt(); 
 		numofRcpts++;
+
+		
 		}
 		else
 		{
