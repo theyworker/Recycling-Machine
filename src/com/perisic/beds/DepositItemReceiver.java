@@ -1,5 +1,12 @@
 package com.perisic.beds;
 
+import com.perisic.beds.DepositItems.Can;
+import com.perisic.beds.DepositItems.Crate;
+import com.perisic.beds.DepositItems.DepositItem;
+import com.perisic.beds.DepositItems.GlassBottle;
+import com.perisic.beds.DepositItems.PaperBag;
+import com.perisic.beds.DepositItems.PlasticBottle;
+import com.perisic.beds.DepositItems.PolytheneBag;
 
 /**
  * @author Marc Conrad

@@ -1,4 +1,4 @@
-package com.perisic.beds;
+package com.perisic.beds.DepositItems;
 
 import com.perisic.beds.Pricing.CurrentPrices;
 
@@ -7,8 +7,8 @@ import com.perisic.beds.Pricing.CurrentPrices;
  *
  */
 public class Crate extends DepositItem {
-	static int weight = 1516; 
-	static int size = 90; 
+	public static int weight = 1516; 
+	public static int size = 90; 
 	/**
 	 * 
 	 */

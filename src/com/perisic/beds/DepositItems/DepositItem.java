@@ -1,13 +1,13 @@
-package com.perisic.beds;
+package com.perisic.beds.DepositItems;
 
 /**
  * @author Marc Conrad
  *
  */
 public abstract class DepositItem {
-	int number; 
-	int value; 
-	String name;
+	public int number; 
+	public int value; 
+	public String name;
 	/**
 	 * This is the Deposit Item class, all the values for the variables will be over-written by the sub-classes.
 	 */

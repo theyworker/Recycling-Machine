@@ -1,6 +1,7 @@
 package com.perisic.beds;
 import java.util.Vector;
 
+import com.perisic.beds.DepositItems.DepositItem;
 import com.perisic.beds.Stats.StatsHub; 
 
 /**

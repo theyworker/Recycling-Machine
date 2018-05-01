@@ -5,7 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.Scanner;
-
+/**
+ * This class keeps track of the statistics of the Recycling Machine
+ * @author devaka
+ *
+ */
 public class StatsHub {
 	static int receipts;
 	static int numofitems;

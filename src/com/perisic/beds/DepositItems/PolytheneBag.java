@@ -1,10 +1,10 @@
-package com.perisic.beds;
+package com.perisic.beds.DepositItems;
 
 import com.perisic.beds.Pricing.CurrentPrices;
 
 public class PolytheneBag extends Bag {
-	static int weight = 1; 
-	static int size = 2; 
+	public static int weight = 1; 
+	public static int size = 2; 
 	/**
 	 * @author devaka
 	 * This is Polythene Bag class, a sub-class of Bag

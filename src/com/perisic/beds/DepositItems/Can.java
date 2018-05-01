@@ -1,4 +1,4 @@
-package com.perisic.beds;
+package com.perisic.beds.DepositItems;
 
 import com.perisic.beds.Pricing.CurrentPrices;
 
@@ -7,8 +7,8 @@ import com.perisic.beds.Pricing.CurrentPrices;
  *
  */
 public class Can extends DepositItem {
-	static int weight = 4; 
-	static int size = 5;
+	public static int weight = 4; 
+	public static int size = 5;
 	
 	/**
 	 * @author devaka
