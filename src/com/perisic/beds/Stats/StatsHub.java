@@ -83,7 +83,7 @@ public class StatsHub {
 	}
 	public static void AddtotalSizeDepositeddStat(double addSize)
 	{
-		totalWeightDeposited+=addSize;
+		totalSizeDeposited+=addSize;
 	}
 	
 	public static void SaveStats()

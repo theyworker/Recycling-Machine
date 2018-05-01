@@ -1,6 +1,5 @@
 package com.perisic.beds;
 
-import com.perisic.beds.Stats.StatsHub;
 
 /**
  * @author Marc Conrad

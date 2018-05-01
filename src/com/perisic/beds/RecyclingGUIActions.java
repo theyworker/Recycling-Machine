@@ -73,13 +73,14 @@ public class RecyclingGUIActions implements ActionListener {
 		}
 		else if(e.getSource().equals(RecyclingGUI.receipt))
 		{
+			StatsHub.AddtotalWeightDepositedStat(thepanel.getTW());
+			StatsHub.AddtotalSizeDepositeddStat(thepanel.getTS());
 			thepanel.printReceipt();
 			ConsoleLog.printlog("Receipt printed");
 			RecyclingGUI.rmvlast.setVisible(false);	
 			StatsHub.AddReceiptStat();
 			
-			StatsHub.AddtotalWeightDepositedStat(thepanel.getTW());
-			StatsHub.AddtotalSizeDepositeddStat(thepanel.getTS());
+			
 			
 			RGUI.resetFunctions();
 		}
