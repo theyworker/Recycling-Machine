@@ -1,6 +1,8 @@
 package com.perisic.beds;
 import java.awt.Color;
 import java.awt.Font;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.Vector;
@@ -302,6 +304,14 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 			   XmlRpcClient server = new XmlRpcClient("http://localHost:1200/RPC2"); 
 			   Vector<String> params = new Vector<String>();
 			   params.add(location);
+			   try {
+					String ip = (InetAddress.getLocalHost().getHostAddress());
+					params.add(ip);
+				} catch (UnknownHostException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			   
 			   Object result = server.execute("hello.newConnection", params);
 			   
 			   if(result.toString().equals("connected")) 

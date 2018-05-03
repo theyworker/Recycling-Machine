@@ -11,12 +11,14 @@ public class HeadOffice implements ActionListener {
 	HeadOfficeGUI HOGUI;
 	String  RMurl = "http://localHost:1300/RPC2";
 	//String sessioncookie="not set";
+	rmConnection rmCon = new rmConnection();
 
 	
 	
-	public String newConnection(String place) {
+	public String newConnection(String place,String ip) {
 		//HOGUI.JTA.setText("Recycling Machine Connected from "+place);
 //		HeadOfficeGUI.JTA.setText(place+"is here!");
+		rmCon.addConnection(new recyclingMachine(place, ip));
 		
 		return "connected";
 	}
