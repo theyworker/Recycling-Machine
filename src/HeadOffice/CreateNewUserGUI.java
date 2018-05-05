@@ -9,7 +9,9 @@ import java.security.GeneralSecurityException;
 import javax.swing.*;
 /**
  * 
- * @author Marc Conrad
+ * @author devaka
+ * 
+ * This enable to create new users to the system. 
  *
  */
 public class CreateNewUserGUI extends JFrame implements ActionListener  {

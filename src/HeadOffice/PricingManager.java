@@ -9,6 +9,11 @@ import java.util.Vector;
 
 import org.apache.xmlrpc.XmlRpcClient;
 
+/**
+ * This class manages the current values of the deposit items .
+ * @author devaka
+ *
+ */
 public class PricingManager {
 
 	int Canvalue;

@@ -21,7 +21,10 @@ import com.j256.twofactorauth.TimeBasedOneTimePasswordUtil;
 public class Enable2FAGUI extends JFrame implements ActionListener  {
 
 	/**
+	 * @author devaka
 	 * 
+	 * This window will display a QR code and will prompt the user for the current 2 Factor code that shown on the 3rd party app
+	 * to proceed with the creation of a new user account
 	 */
 	String path;
 	String base32Secret;

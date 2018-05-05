@@ -11,6 +11,12 @@ import java.util.Scanner;
 
 import com.j256.twofactorauth.TimeBasedOneTimePasswordUtil;
 
+/**
+ * 
+ * This class manages user credentionals on all types of users. 
+ * @author devaka
+ *
+ */
 public class PasswordManager {
 
 	public String checkEngCredentials(String usrname, String pssword) 

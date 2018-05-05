@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
 
 /**
  * A Simple Graphical User Interface for the Recycling Machine.
- * @author Marc Conrad
+ * @author devaka
  *
  */
 public class HOLoginGUI extends JFrame implements ActionListener {

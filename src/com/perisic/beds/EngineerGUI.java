@@ -79,6 +79,9 @@ public class EngineerGUI extends JFrame implements ActionListener {
 		}
 		else if(e.getSource().equals(Stats))
 		{
+			/**
+			 * Engineer is able to view statistics of a particular recycling machine 
+			 */
 			EngTA.setText(StatsHub.printStat());
 		}
 	}
