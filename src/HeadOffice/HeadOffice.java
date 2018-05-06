@@ -55,31 +55,31 @@ public class HeadOffice implements ActionListener {
 			   }
 	}
 	
-	public void clearReceiptClient() {
-		try {
-			   XmlRpcClient server = new XmlRpcClient(RMurl); 
-			   Vector<String> params = new Vector<String>();
-			   Object result = server.execute("machine.clearScreenRemotely", params);
-			   System.out.println("Result from Server: "+result.toString());
-			   }
-			   
-		catch (Exception ex) {
-			   System.err.println("HelloClient: " + ex);
-			   }
-	}
-	
-	public void getNumofItemsClient() {
-		try {
-			   XmlRpcClient server = new XmlRpcClient(RMurl); 
-			   Vector<String> params = new Vector<String>();
-			   Object result = server.execute("machine.getNumofItems", params);
-			   System.out.println("The number of items in the machine:  "+result.toString());
-			   }
-			   
-		catch (Exception ex) {
-			   System.err.println("HelloClient: " + ex);
-			   }
-	}
+//	public void clearReceiptClient() {
+//		try {
+//			   XmlRpcClient server = new XmlRpcClient(RMurl); 
+//			   Vector<String> params = new Vector<String>();
+//			   Object result = server.execute("machine.clearScreenRemotely", params);
+//			   System.out.println("Result from Server: "+result.toString());
+//			   }
+//			   
+//		catch (Exception ex) {
+//			   System.err.println("HelloClient: " + ex);
+//			   }
+//	}
+//	
+//	public void getNumofItemsClient() {
+//		try {
+//			   XmlRpcClient server = new XmlRpcClient(RMurl); 
+//			   Vector<String> params = new Vector<String>();
+//			   Object result = server.execute("machine.getNumofItems", params);
+//			   System.out.println("The number of items in the machine:  "+result.toString());
+//			   }
+//			   
+//		catch (Exception ex) {
+//			   System.err.println("HelloClient: " + ex);
+//			   }
+//	}
 	
 	
 	
@@ -101,21 +101,21 @@ public class HeadOffice implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if(e.getSource().equals(controlPnlWDW.turnoff))
-		{
-			terminateClient();
-		}
+//		if(e.getSource().equals(controlPnlWDW.turnoff))
+//		{
+//			terminateClient();
+//		}
+//		
+//		else if(e.getSource().equals(controlPnlWDW.ClearReceipt))
+//		{
+//			clearReceiptClient();
+//		}
+//		else if(e.getSource().equals(controlPnlWDW.GetnoofItems))
+//		{
+//			getNumofItemsClient();
+//		}
 		
-		else if(e.getSource().equals(controlPnlWDW.ClearReceipt))
-		{
-			clearReceiptClient();
-		}
-		else if(e.getSource().equals(controlPnlWDW.GetnoofItems))
-		{
-			getNumofItemsClient();
-		}
-		
-		else if(e.getSource().equals(HeadOfficeGUITesting.CreateUser))
+		if(e.getSource().equals(HeadOfficeGUITesting.CreateUser))
 		{
 			CreateNewUserGUI cnu = new CreateNewUserGUI();
 			cnu.setVisible(true);
@@ -134,8 +134,8 @@ public class HeadOffice implements ActionListener {
 			if(Ho.ipLookup(userIP))
 			{
 				controlPnlWDW cplWDW = new controlPnlWDW(userIP);
-				System.out.println(userIP);
 				cplWDW.setVisible(true);
+				
 			}
 			
 		}

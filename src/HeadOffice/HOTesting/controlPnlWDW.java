@@ -67,10 +67,18 @@ public class controlPnlWDW extends JFrame implements ActionListener  {
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(turnoff)) 
 		{
-			System.out.println(targetURL);
 			terminateClient();
 			
 		}
+		else if(e.getSource().equals(controlPnlWDW.ClearReceipt))
+		{
+			clearReceiptClient();
+		}
+		else if(e.getSource().equals(controlPnlWDW.GetnoofItems))
+		{
+			getNumofItemsClient();
+		}
+		
 		
 	}
 	public void terminateClient() {
@@ -91,5 +99,30 @@ public class controlPnlWDW extends JFrame implements ActionListener  {
 	}
 	
 	
+	public void clearReceiptClient() {
+		try {
+			   XmlRpcClient server = new XmlRpcClient(targetURL); 
+			   Vector<String> params = new Vector<String>();
+			   Object result = server.execute("machine.clearScreenRemotely", params);
+			   System.out.println("Result from Server: "+result.toString());
+			   }
+			   
+		catch (Exception ex) {
+			   System.err.println("HelloClient: " + ex);
+			   }
+	}
+	
+	public void getNumofItemsClient() {
+		try {
+			   XmlRpcClient server = new XmlRpcClient(targetURL); 
+			   Vector<String> params = new Vector<String>();
+			   Object result = server.execute("machine.getNumofItems", params);
+			   System.out.println("The number of items in the machine:  "+result.toString());
+			   }
+			   
+		catch (Exception ex) {
+			   System.err.println("HelloClient: " + ex);
+			   }
+	}
 
 }
