@@ -1,5 +1,7 @@
 package HeadOffice;
 
+import java.util.Random;
+
 public class recyclingMachine {
 	String location;
 	String ip;
@@ -22,7 +24,8 @@ public class recyclingMachine {
 	
 	public String setCookie() 
 	{
-		cookie = "ri"+Math.random();
+		Random randomNum = new Random();
+		cookie = "ri"+randomNum.nextInt(100000000);
 		return cookie;
 	}
 

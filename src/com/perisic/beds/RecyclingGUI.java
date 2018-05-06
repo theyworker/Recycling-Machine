@@ -45,6 +45,7 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	static int currentVal = 0;
 	
 	String location = "Colombo";
+	String sessionCookie = null;
 	
 	
 	CurrentPrices Cp;
@@ -304,17 +305,23 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 			   XmlRpcClient server = new XmlRpcClient("http://localHost:1200/RPC2"); 
 			   Vector<String> params = new Vector<String>();
 			   params.add(location);
+			   String ip = null;
 			   try {
-					String ip = (InetAddress.getLocalHost().getHostAddress());
+					ip = (InetAddress.getLocalHost().getHostAddress());
 					params.add(ip);
 				} catch (UnknownHostException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+//			   
+//			   params.add("yo");
+//			   params.add("ye");
+//			 
 			   
 			   Object result = server.execute("hello.newConnection", params);
-			   
-			   if(result.toString().equals("connected")) 
+			   sessionCookie = result.toString();
+			   System.out.println(sessionCookie);
+			   if(sessionCookie!= null) 
 			   {
 				   ConsoleLog.printlog("Connected with Recycling Inc. Server");
 				   connectLbl.setBounds(726, 400, 24, 24);

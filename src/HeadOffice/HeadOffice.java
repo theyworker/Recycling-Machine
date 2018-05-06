@@ -9,23 +9,18 @@ import HeadOffice.HOTesting.*;
 
 public class HeadOffice implements ActionListener {
 	
-	int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag, countPolythenebag;
-	HeadOfficeGUITesting Ho;
+	//int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag, countPolythenebag;
+	//HeadOfficeGUITesting Ho;
+	static HeadOfficeGUITesting Ho = new HeadOfficeGUITesting();
 	String  RMurl = "http://localHost:1300/RPC2";
-	//String sessioncookie="not set";
-	rmConnection rmCon = new rmConnection();
 	
- 
 
 
-	
-	
-	public String newConnection(String place,String ip) {
-		//HOGUI.JTA.setText("Recycling Machine Connected from "+place);
-//		HeadOfficeGUI.JTA.setText(place+"is here!");
-		rmCon.addConnection(new recyclingMachine(place, ip));
-		
-		return "connected";
+	public String newConnection(String loc,String ip) {
+		recyclingMachine newRM = new recyclingMachine(loc,ip);
+		HeadOfficeGUITesting.addConnection(newRM);
+		String sessionCookie =  newRM.setCookie();
+		return sessionCookie;
 	}
 	
 	public void priceUpdation()
@@ -89,13 +84,16 @@ public class HeadOffice implements ActionListener {
 	
 	
 	public static void main(String[] args) {
-		HeadOfficeGUITesting Ho = new HeadOfficeGUITesting();
+		
 		Ho.setVisb();
 	//~~~~~~~~~~~~~~~~~~~~~~~~~ Logins Disabled for testing
 	//	HOLoginGUI HOLogin = new HOLoginGUI(HOGUI);
 	//HOLogin.setVisible(true);
 		
 		startServers();
+		
+		
+
 		
 		
 	}
@@ -132,8 +130,14 @@ public class HeadOffice implements ActionListener {
 		
 		else if (e.getSource().equals(HeadOfficeGUITesting.control))
 		{
-			controlPnlWDW cplWDW = new controlPnlWDW();
-			cplWDW.setVisible(true);
+			String userIP = Ho.usrIP.getText();
+			if(Ho.ipLookup(userIP))
+			{
+				controlPnlWDW cplWDW = new controlPnlWDW(userIP);
+				System.out.println(userIP);
+				cplWDW.setVisible(true);
+			}
+			
 		}
 		
 	}

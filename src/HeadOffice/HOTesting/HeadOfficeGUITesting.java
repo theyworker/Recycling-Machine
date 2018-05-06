@@ -23,10 +23,12 @@ public class HeadOfficeGUITesting extends JFrame  {
 	HeadOffice HO = new HeadOffice();
 	private static final long serialVersionUID = 546723911453041610L;//unique code for each object
 	
+	// Connected Devices 
 	private JTextArea JTA = new JTextArea(10,15);	
 	JScrollPane JTAScrll = new JScrollPane(JTA);
-	
-	public static JButton control = new JButton("Control");
+	public static JButton control = new JButton("Options");
+	public JTextField usrIP = new JTextField();
+	JLabel usrIPlbl = new JLabel("<html>Enter the IP of the <br/> Recycling machine</html>");
 	
 	
 	JFrame HeadQuarterFrame;
@@ -53,17 +55,31 @@ public class HeadOfficeGUITesting extends JFrame  {
 	static Vector<recyclingMachine> connection = new Vector<recyclingMachine>();
 	
 	
-	public void addConnection(recyclingMachine rm) 
+	public static void addConnection(recyclingMachine rm) 
 	{
 		connection.add(rm);
+	}
+	
+	public static String newCnnct(String loc, String ip)
+	{
+		recyclingMachine newRM = new recyclingMachine(loc,ip);
+		addConnection(newRM);
+		return newRM.setCookie();
 		
+	}
+	
+	public boolean ipLookup(String userIp)
+	{
+		for(int j=0; j<(connection.size());j++)
+		{
+			if (connection.get(j).getIp().equals(userIp))
+				return true;
+		}
+		return false;
 	}
 	
 	public String showConnections()
 	{
-		addConnection(new recyclingMachine("Trinco", "192.168.1.1"));
-		addConnection(new recyclingMachine("Galle", "192.168.1.1"));
-		addConnection(new recyclingMachine("Matara", "192.168.1.1"));
 		String currCons = null;
 		for (int f= 0; f<connection.size();f++)
 		{
@@ -112,6 +128,14 @@ public class HeadOfficeGUITesting extends JFrame  {
 		conDevs.add(LocLBL);
 		conDevs.add(IpLbl);
 		conDevs.add(refreshCons);
+		conDevs.add(usrIP);
+		conDevs.add(control);
+		conDevs.add(usrIPlbl);
+		
+		usrIPlbl.setBounds(485, 50, 200, 30);
+		usrIP.setBounds(450, 90, 200, 20);
+		control.setBounds(450, 120, 200, 30);
+		control.addActionListener(HO);
 	
 		LocLBL.setBounds(20, 13, 70, 10);
 		IpLbl.setBounds(200,13,70,10);
@@ -136,19 +160,7 @@ public class HeadOfficeGUITesting extends JFrame  {
 		
 		
 
-		JPanel conPanel = new JPanel();
-		tabbedPane.addTab("Control Panel", null, conPanel, null);
-		conPanel.setLayout(null);
-		conPanel.setBackground(Color.gray);
-		conPanel.add(control);
-		control.setBounds(200, 50, 200, 30);
-		control.addActionListener(HO);
-		
-	
-		txtitem.setForeground(Color.black);
-		txtitem.setBackground(Color.white);
-		txtitem.setBounds(10, 11, 774, 450);
-		conPanel.add(txtitem);
+
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Usage Summary", null, panel_1, null);
@@ -195,6 +207,7 @@ public class HeadOfficeGUITesting extends JFrame  {
 	
 		this.HeadQuarterFrame.setVisible(true);
 	}
+
 
 
 }
