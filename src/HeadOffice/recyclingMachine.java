@@ -10,6 +10,14 @@ public class recyclingMachine {
 		ip = IP;
 		
 	}
+	
+	public String getIp() {
+		return ip;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
 
 	
 }

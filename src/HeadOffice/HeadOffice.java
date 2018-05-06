@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.util.Vector;
 import org.apache.xmlrpc.*;
 
+import HeadOffice.HOTesting.HeadOfficeGUITesting;
+import HeadOffice.HOTesting.controlPnlWDW;
+
 public class HeadOffice implements ActionListener {
 	
 	int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag, countPolythenebag;
@@ -12,6 +15,9 @@ public class HeadOffice implements ActionListener {
 	String  RMurl = "http://localHost:1300/RPC2";
 	//String sessioncookie="not set";
 	rmConnection rmCon = new rmConnection();
+	
+	HeadOfficeGUITesting HOTesting; 
+
 
 	
 	
@@ -87,6 +93,7 @@ public class HeadOffice implements ActionListener {
 		HeadOfficeGUI HOGUI = new HeadOfficeGUI();
 		HOLoginGUI HOLogin = new HOLoginGUI(HOGUI);
 		HOLogin.setVisible(true);
+		
 		startServers();
 		
 		
@@ -121,6 +128,16 @@ public class HeadOffice implements ActionListener {
 			System.out.println("So the button was pressed");
 		}
 		
+		else if(e.getSource().equals(HeadOfficeGUITesting.refreshCons))
+		{
+			// make it refresh
+		}
+		
+		else if (e.getSource().equals(HeadOfficeGUITesting.control))
+		{
+			controlPnlWDW cplWDW = new controlPnlWDW();
+			cplWDW.setVisible(true);
+		}
 		
 	}
 
