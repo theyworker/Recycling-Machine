@@ -2,6 +2,8 @@ package HeadOffice.HOTesting;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.*;
@@ -21,7 +23,7 @@ public class HeadOfficeGUITesting extends JFrame  {
 	HeadOffice HO = new HeadOffice();
 	private static final long serialVersionUID = 546723911453041610L;//unique code for each object
 	
-	static JTextArea JTA = new JTextArea(10,15);	
+	private JTextArea JTA = new JTextArea(10,15);	
 	JScrollPane JTAScrll = new JScrollPane(JTA);
 	
 	public static JButton control = new JButton("Control");
@@ -40,9 +42,11 @@ public class HeadOfficeGUITesting extends JFrame  {
 	
 	
 	//Administration 
-	static JButton CreateUser = new JButton("Create a new user");
+	public static JButton CreateUser = new JButton("Create a new user");
 	
 	static JButton exit = new JButton("System Shutdown");
+	
+	public static JButton UpdatePriceBtn = new JButton("Update Prices");
 	
 	
 
@@ -74,6 +78,7 @@ public class HeadOfficeGUITesting extends JFrame  {
 		}
 		return currCons;
 	}
+	
 	
 	public HeadOfficeGUITesting() {
 		super();
@@ -116,7 +121,18 @@ public class HeadOfficeGUITesting extends JFrame  {
 		refreshCons.setBounds(20, 360, 275, 30);
 		refreshCons.setBackground(Color.BLUE);
 		refreshCons.setForeground(Color.white);
-		refreshCons.addActionListener(HO);
+		refreshCons.addActionListener(new ActionListener() {
+			/**
+			 * Refreshing Current Connenctions
+			 */
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource().equals(refreshCons))
+				{
+					JTA.setText(showConnections());
+				}
+			}
+		});
 		
 		
 
@@ -145,16 +161,22 @@ public class HeadOfficeGUITesting extends JFrame  {
 		txttransaction.setBounds(10, 11, 774, 450);
 		panel_1.add(txttransaction);
 		
+		
+		//Administration Tab
 		JPanel panel_2 = new JPanel();
 		tabbedPane.addTab("Administration", null, panel_2, null);
 		panel_2.setLayout(null);
 		panel_2.setBackground(Color.gray);
 		panel_2.add(CreateUser);
 		panel_2.add(exit);
+		panel_2.add(UpdatePriceBtn);
+		UpdatePriceBtn.addActionListener(HO);
 		CreateUser.addActionListener(HO);
 		CreateUser.setBounds(200, 30, 200, 30);
-		exit.setBounds(200, 90, 200, 30);
+		exit.setBounds(200, 150, 200, 30);
 		exit.addActionListener(HO);
+		UpdatePriceBtn.setBounds(200, 100, 200, 30);
+		
 		
 		HeadQuarterFrame.setBackground(Color.gray);
 		HeadQuarterFrame.getContentPane().setBackground(Color.gray);
@@ -167,12 +189,12 @@ public class HeadOfficeGUITesting extends JFrame  {
 
 		
 	}
-	public static void main(String[] args) {
-		HeadOfficeGUITesting HOGUI = new HeadOfficeGUITesting();
-		
-		HOGUI.HeadQuarterFrame.setVisible(true);
 	
-		
+	public void setVisb() 
+	{
+	
+		this.HeadQuarterFrame.setVisible(true);
 	}
+
 
 }

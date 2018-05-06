@@ -19,10 +19,10 @@ public class controlPnlWDW extends JFrame  {
 	private static final long serialVersionUID = 546723911453041610L;//unique code for each object
 
 	String IP;
-	static JButton turnoff = new JButton("Turn off the machine");
-	static JButton ClearReceipt = new JButton("Clear Current Receipt");
-	static JButton GetnoofItems = new JButton("Get Number of Items");
-	static JButton UpdatePriceBtn = new JButton("Update Prices");
+	public static JButton turnoff = new JButton("Turn off the machine");
+	public static JButton ClearReceipt = new JButton("Clear Current Receipt");
+	public static JButton GetnoofItems = new JButton("Get Number of Items");
+	public static JButton UpdatePriceBtn = new JButton("Update Prices");
 	HeadOffice HO = new HeadOffice();
 
 	

@@ -5,18 +5,17 @@ import java.io.IOException;
 import java.util.Vector;
 import org.apache.xmlrpc.*;
 
-import HeadOffice.HOTesting.HeadOfficeGUITesting;
-import HeadOffice.HOTesting.controlPnlWDW;
+import HeadOffice.HOTesting.*;
 
 public class HeadOffice implements ActionListener {
 	
 	int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag, countPolythenebag;
-	HeadOfficeGUI HOGUI;
+	HeadOfficeGUITesting Ho;
 	String  RMurl = "http://localHost:1300/RPC2";
 	//String sessioncookie="not set";
 	rmConnection rmCon = new rmConnection();
 	
-	HeadOfficeGUITesting HOTesting; 
+ 
 
 
 	
@@ -90,9 +89,11 @@ public class HeadOffice implements ActionListener {
 	
 	
 	public static void main(String[] args) {
-		HeadOfficeGUI HOGUI = new HeadOfficeGUI();
-		HOLoginGUI HOLogin = new HOLoginGUI(HOGUI);
-		HOLogin.setVisible(true);
+		HeadOfficeGUITesting Ho = new HeadOfficeGUITesting();
+		Ho.setVisb();
+	//~~~~~~~~~~~~~~~~~~~~~~~~~ Logins Disabled for testing
+	//	HOLoginGUI HOLogin = new HOLoginGUI(HOGUI);
+	//HOLogin.setVisible(true);
 		
 		startServers();
 		
@@ -102,36 +103,32 @@ public class HeadOffice implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if(e.getSource().equals(HeadOfficeGUI.turnoff))
+		if(e.getSource().equals(controlPnlWDW.turnoff))
 		{
 			terminateClient();
 		}
 		
-		else if(e.getSource().equals(HeadOfficeGUI.ClearReceipt))
+		else if(e.getSource().equals(controlPnlWDW.ClearReceipt))
 		{
 			clearReceiptClient();
 		}
-		else if(e.getSource().equals(HeadOfficeGUI.GetnoofItems))
+		else if(e.getSource().equals(controlPnlWDW.GetnoofItems))
 		{
 			getNumofItemsClient();
 		}
 		
-		else if(e.getSource().equals(HeadOfficeGUI.CreateUser))
+		else if(e.getSource().equals(HeadOfficeGUITesting.CreateUser))
 		{
 			CreateNewUserGUI cnu = new CreateNewUserGUI();
 			cnu.setVisible(true);
 		}
 		
-		else if(e.getSource().equals(HeadOfficeGUI.UpdatePriceBtn))
+		else if(e.getSource().equals(HeadOfficeGUITesting.UpdatePriceBtn))
 		{
 			priceUpdation();
 			System.out.println("So the button was pressed");
 		}
 		
-		else if(e.getSource().equals(HeadOfficeGUITesting.refreshCons))
-		{
-			// make it refresh
-		}
 		
 		else if (e.getSource().equals(HeadOfficeGUITesting.control))
 		{
