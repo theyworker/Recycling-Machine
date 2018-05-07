@@ -125,6 +125,12 @@ public class PricingManager {
 			 
 		}
 	}
+	
+	public String printCurrPrices() 
+	{
+		return "Can : "+Canvalue+"\nCrate : "+Cratevalue+"\nPolythene Bag : "+PolytheneBagvalue+"\n"+
+	"Paper Bag : "+PaperBagvalue+"\nPlastic Bottle : "+PlasticBottlevalue+"\nGlass Bottle : "+GlassBottlevalue;
+	}
 
 	
 }

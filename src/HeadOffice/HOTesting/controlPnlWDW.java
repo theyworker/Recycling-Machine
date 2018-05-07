@@ -29,10 +29,8 @@ public class controlPnlWDW extends JFrame implements ActionListener  {
 	public static JButton turnoff = new JButton("Turn off the machine");
 	public static JButton ClearReceipt = new JButton("Clear Current Receipt");
 	public static JButton GetnoofItems = new JButton("Get Number of Items");
-	public static JButton UpdatePriceBtn = new JButton("Update Prices");
+
 	HeadOffice HO = new HeadOffice();
-	String  RMurl = "http://localHost:1300/RPC2";
-	String  RMurl11 = "http://127.0.1.1:1300/RPC2";
 	String url1 = "http://";
 	String url2 = ":1300/RPC2";
 	
@@ -49,13 +47,11 @@ public class controlPnlWDW extends JFrame implements ActionListener  {
 		panel.add(ClearReceipt);
 		panel.add(GetnoofItems);
 		
-		panel.add(UpdatePriceBtn);
-	
+
 //		panel.add(JTA);
 		turnoff.addActionListener(this);
 		ClearReceipt.addActionListener(this);
 		GetnoofItems.addActionListener(this);
-		UpdatePriceBtn.addActionListener(this);
 		getContentPane().add(panel);
 		panel.repaint();
 	

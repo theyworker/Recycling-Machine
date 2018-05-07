@@ -3,6 +3,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.Vector;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import org.apache.xmlrpc.*;
 
 import HeadOffice.HOTesting.*;
@@ -38,44 +42,18 @@ public class HeadOffice implements ActionListener {
 		SvrMng.runServer();
 	}
 	
-	public void terminateClient() {
-		try {
-			   XmlRpcClient server = new XmlRpcClient(RMurl); 
-			   Vector<String> params = new Vector<String>();
-			   server.execute("machine.restartMachine", params);
-			   
-			   }
-			   
-		catch (IOException e)
-			{
-			System.out.println("Recycling Machine may not be turned on");
-			}
-		catch (Exception ex) {
-			   System.err.println("HelloClient: " + ex);
-			   }
-	}
-	
-//	public void clearReceiptClient() {
+//	public void terminateClient() {
 //		try {
 //			   XmlRpcClient server = new XmlRpcClient(RMurl); 
 //			   Vector<String> params = new Vector<String>();
-//			   Object result = server.execute("machine.clearScreenRemotely", params);
-//			   System.out.println("Result from Server: "+result.toString());
+//			   server.execute("machine.restartMachine", params);
+//			   
 //			   }
 //			   
-//		catch (Exception ex) {
-//			   System.err.println("HelloClient: " + ex);
-//			   }
-//	}
-//	
-//	public void getNumofItemsClient() {
-//		try {
-//			   XmlRpcClient server = new XmlRpcClient(RMurl); 
-//			   Vector<String> params = new Vector<String>();
-//			   Object result = server.execute("machine.getNumofItems", params);
-//			   System.out.println("The number of items in the machine:  "+result.toString());
-//			   }
-//			   
+//		catch (IOException e)
+//			{
+//			System.out.println("Recycling Machine may not be turned on");
+//			}
 //		catch (Exception ex) {
 //			   System.err.println("HelloClient: " + ex);
 //			   }
@@ -100,20 +78,6 @@ public class HeadOffice implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-//		if(e.getSource().equals(controlPnlWDW.turnoff))
-//		{
-//			terminateClient();
-//		}
-//		
-//		else if(e.getSource().equals(controlPnlWDW.ClearReceipt))
-//		{
-//			clearReceiptClient();
-//		}
-//		else if(e.getSource().equals(controlPnlWDW.GetnoofItems))
-//		{
-//			getNumofItemsClient();
-//		}
 		
 		if(e.getSource().equals(HeadOfficeGUITesting.CreateUser))
 		{
@@ -124,6 +88,7 @@ public class HeadOffice implements ActionListener {
 		else if(e.getSource().equals(HeadOfficeGUITesting.UpdatePriceBtn))
 		{
 			priceUpdation();
+			//remove this~~~~~~~~~~~~~~~~~
 			System.out.println("So the button was pressed");
 		}
 		
@@ -131,11 +96,17 @@ public class HeadOffice implements ActionListener {
 		else if (e.getSource().equals(HeadOfficeGUITesting.control))
 		{
 			String userIP = Ho.usrIP.getText();
-			if(Ho.ipLookup(userIP))
+			if(userIP.isEmpty()) {
+				JOptionPane.showMessageDialog(new JFrame(), "Please enter the IP of the Recycling Machine you want to access");
+			}
+			else 
 			{
-				controlPnlWDW cplWDW = new controlPnlWDW(userIP);
-				cplWDW.setVisible(true);
-				
+				if(Ho.ipLookup(userIP))
+				{
+					controlPnlWDW cplWDW = new controlPnlWDW(userIP);
+					cplWDW.setVisible(true);
+
+				}
 			}
 			
 		}
