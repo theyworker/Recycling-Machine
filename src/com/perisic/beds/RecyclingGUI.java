@@ -281,8 +281,7 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		
 		
 		panel.add(scrll);
-		
-		
+			
 		
 		panel.add(pbwlbl);
 		panel.add(pbw);
@@ -362,12 +361,8 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		
 	}
 	
-
 	
-	
-	
-	
-	public static void main(String [] args ) { 
+	public static void main(String [] args) { 
 		final CurrentPrices Cp = new CurrentPrices();
 		RecyclingGUI myGUI = new RecyclingGUI(Cp);
 		Cp.loadPrices(); // load the last saved prices on the machine
@@ -388,6 +383,4 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 			 }
 		 }));
 	}
-	
-
 }

@@ -96,18 +96,17 @@ public class PricingManager {
 			
 			writer.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 	
-	public void sendPrices()
+	public void sendPrices(String ip)
 	{
 		System.out.println("Sending the prices");
 		try {
 			
-			   XmlRpcClient server = new XmlRpcClient("http://localHost:1300/RPC2"); 
+			   XmlRpcClient server = new XmlRpcClient("http://"+ip+":1300/RPC2"); 
 			   Vector<String> params = new Vector<String>();
 			   params.add(Integer.toString(Canvalue));
 			   params.add(Integer.toString(Cratevalue));
@@ -117,8 +116,6 @@ public class PricingManager {
 			   params.add(Integer.toString(GlassBottlevalue));
 			   Object result = server.execute("pricing.updatePrices", params);
 
-		        System.out.println("Sending the prices22"+result.toString());
-			   System.out.println(result.toString());
 			   }
 			   
 		catch (Exception ex) {

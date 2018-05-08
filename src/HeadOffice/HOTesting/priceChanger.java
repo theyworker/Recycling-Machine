@@ -46,7 +46,7 @@ public class priceChanger extends JFrame implements ActionListener  {
 	JButton updtPrices = new JButton("Update Prices");
 	
 
-	public priceChanger() {
+	public priceChanger(final HeadOfficeGUITesting Ho) {
 		super("Update Prices");
 
 		setSize(300, 440);
@@ -146,6 +146,9 @@ public class priceChanger extends JFrame implements ActionListener  {
 						pm.changeValue("GlassBottle", glass);
 					}
 					pm.SaveStats();
+					Ho.pushPricestoALL(pm);
+					
+					
 				}
 				
 			}
@@ -176,13 +179,7 @@ public class priceChanger extends JFrame implements ActionListener  {
 		
 		
 	}
-	public static void main(String[] args) 
-	{
 	
-		pm.getPrices();
-		priceChanger pC = new priceChanger();
-		pC.setVisible(true);
-	}
 	
 
 }

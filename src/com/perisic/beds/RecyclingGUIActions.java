@@ -22,6 +22,7 @@ public class RecyclingGUIActions implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		RecyclingGUI.resetTimer();
+		StatsHub.sendStats(RGUI.sessionCookie);
 		
 		/*
 		*For testing purposes:

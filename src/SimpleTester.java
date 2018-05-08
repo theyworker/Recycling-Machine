@@ -1,4 +1,6 @@
 import com.perisic.beds.*;
+
+import HeadOffice.HOTesting.HeadOfficeGUITesting;
 /**
  * Tests the recycling machine.
  * @author Marc Conrad
@@ -12,21 +14,9 @@ public class SimpleTester {
 		 * This main function is used for simple testing purposes.
 		 * @author devaka
 		 */
-		Display dis = new Display();
 		
-		CustomerPanel myPanel = new CustomerPanel(dis); 
-		myPanel.itemReceived(3);
-		myPanel.itemReceived(3);
-		myPanel.itemReceived(3);
-		myPanel.itemReceived(3);
-		myPanel.itemReceived(3);
-		myPanel.itemReceived(3);
-//		myPanel.itemReceived(2);
-//		myPanel.itemReceived(4);
-//		myPanel.itemReceived(5);
-//		myPanel.itemReceived(5);
-
-		myPanel.printReceipt();
+		HeadOfficeGUITesting HO = new HeadOfficeGUITesting();
+//		RecyclingGUI RG = new RecyclingGUI(CurrPrices)
 		/**
 		 * This is the main method, we have used it here for testing purposes
 		 * 

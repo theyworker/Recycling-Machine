@@ -2,6 +2,8 @@ package HeadOffice;
 
 import org.apache.xmlrpc.WebServer;
 
+import HeadOffice.Stats.StatsHO;
+
 
 public class ServerManager {
 
@@ -12,6 +14,7 @@ public class ServerManager {
 		//current this server is not being used 
 		WebServer server = new WebServer(1200);
 	  	 server.addHandler("hello", new HeadOffice());
+	  	 server.addHandler("usage", new StatsHO());
 	   	 server.start();
 	}
 	

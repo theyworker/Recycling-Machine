@@ -1,15 +1,10 @@
 package HeadOffice;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.Vector;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import org.apache.xmlrpc.*;
-
 import HeadOffice.HOTesting.*;
+import HeadOffice.Stats.StatsHO;
 
 public class HeadOffice implements ActionListener {
 	
@@ -18,7 +13,7 @@ public class HeadOffice implements ActionListener {
 	static HeadOfficeGUITesting Ho = new HeadOfficeGUITesting();
 	String  RMurl = "http://localHost:1300/RPC2";
 	
-
+public StatsHO statistics = new StatsHO();
 
 	public String newConnection(String loc,String ip) {
 		recyclingMachine newRM = new recyclingMachine(loc,ip);
@@ -27,13 +22,13 @@ public class HeadOffice implements ActionListener {
 		return sessionCookie;
 	}
 	
-	public void priceUpdation()
-	{
-		PricingManager PriceMng = new PricingManager();
-		PriceMng.getPrices();
-		PriceMng.sendPrices();
-		System.out.println("HO function");
-	}
+//	public void priceUpdation()
+//	{
+//		PricingManager PriceMng = new PricingManager();
+//		PriceMng.getPrices();
+//		PriceMng.sendPrices();
+//		System.out.println("HO function");
+//	}
 	
 	public static void startServers()
 	{
@@ -42,22 +37,7 @@ public class HeadOffice implements ActionListener {
 		SvrMng.runServer();
 	}
 	
-//	public void terminateClient() {
-//		try {
-//			   XmlRpcClient server = new XmlRpcClient(RMurl); 
-//			   Vector<String> params = new Vector<String>();
-//			   server.execute("machine.restartMachine", params);
-//			   
-//			   }
-//			   
-//		catch (IOException e)
-//			{
-//			System.out.println("Recycling Machine may not be turned on");
-//			}
-//		catch (Exception ex) {
-//			   System.err.println("HelloClient: " + ex);
-//			   }
-//	}
+
 	
 	
 	
@@ -87,10 +67,10 @@ public class HeadOffice implements ActionListener {
 		
 		else if(e.getSource().equals(HeadOfficeGUITesting.UpdatePriceBtn))
 		{
-			priceUpdation();
-			//remove this~~~~~~~~~~~~~~~~~
-			System.out.println("So the button was pressed");
-		}
+			//priceUpdation();
+			priceChanger pC = new priceChanger(Ho);
+			pC.setVisible(true);
+			}
 		
 		
 		else if (e.getSource().equals(HeadOfficeGUITesting.control))

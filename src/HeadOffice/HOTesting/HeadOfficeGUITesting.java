@@ -4,11 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Vector;
 
 import javax.swing.*;
 
+import org.apache.xmlrpc.XmlRpcClient;
+
 import HeadOffice.HeadOffice;
+import HeadOffice.PricingManager;
 import HeadOffice.recyclingMachine;
 /**
  * A Simple Graphical User Interface for the Recycling Machine.
@@ -60,12 +64,65 @@ public class HeadOfficeGUITesting extends JFrame  {
 		connection.add(rm);
 	}
 	
+	public static String tallyCookie(String sessionCookie)
+	{
+		for(int h=0; h<numofConnections();h++) 
+		{
+			if(connection.get(h).getCookie().equals(sessionCookie))
+			{
+				return connection.get(h).getLocation();
+			}
+			
+		}
+		return null;
+	}
+	
 	public static String newCnnct(String loc, String ip)
 	{
 		recyclingMachine newRM = new recyclingMachine(loc,ip);
 		addConnection(newRM);
 		return newRM.setCookie();
 		
+	}
+	
+	public static int numofConnections()
+	{
+		return connection.size();
+	}
+	
+	public void pushPricestoALL(PricingManager pm)
+	{
+		for(int h=0; h<numofConnections();h++) 
+		{
+			String tempIP = connection.get(h).getIp();
+			pm.sendPrices(tempIP);
+		}
+	}
+	public void shutDownALL()
+	{
+		String url1 = "http://";
+		String url2 = ":1300/RPC2";
+		
+		for(int h=0; h<numofConnections();h++) 
+		{
+			String tempIP = connection.get(h).getIp();
+				try {
+						String target = url1+tempIP+url2;
+					   XmlRpcClient server = new XmlRpcClient(target); 
+					   Vector<String> params = new Vector<String>();
+					   server.execute("machine.restartMachine", params);
+					   
+					   }
+					   
+				catch (IOException e)
+					{
+					System.out.println("Recycling Machine may not be turned on");
+					}
+				catch (Exception ex) {
+					   System.err.println("HelloClient: " + ex);
+					   }
+			
+		}
 	}
 	
 	public boolean ipLookup(String userIp)
@@ -186,7 +243,14 @@ public class HeadOfficeGUITesting extends JFrame  {
 		CreateUser.addActionListener(HO);
 		CreateUser.setBounds(200, 30, 200, 30);
 		exit.setBounds(200, 150, 200, 30);
-		exit.addActionListener(HO);
+		exit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				shutDownALL();
+				System.exit(0);
+			}
+		});
 		UpdatePriceBtn.setBounds(200, 100, 200, 30);
 		
 		
@@ -207,6 +271,7 @@ public class HeadOfficeGUITesting extends JFrame  {
 	
 		this.HeadQuarterFrame.setVisible(true);
 	}
+
 
 
 
