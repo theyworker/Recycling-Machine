@@ -1,4 +1,4 @@
-package HeadOffice.HOTesting;
+package HeadOffice;
 
 
 import java.awt.event.ActionEvent;
@@ -9,8 +9,6 @@ import java.util.Vector;
 import javax.swing.*;
 
 import org.apache.xmlrpc.XmlRpcClient;
-
-import HeadOffice.HeadOffice;
 
 /**
  * 

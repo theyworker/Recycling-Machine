@@ -1,9 +1,10 @@
-package HeadOffice.HOTesting;
+package HeadOffice;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -11,9 +12,8 @@ import javax.swing.*;
 
 import org.apache.xmlrpc.XmlRpcClient;
 
-import HeadOffice.HeadOffice;
-import HeadOffice.PricingManager;
-import HeadOffice.recyclingMachine;
+
+import HeadOffice.Stats.StatsHO;
 /**
  * A Simple Graphical User Interface for the Recycling Machine.
  * @author devaka
@@ -39,12 +39,23 @@ public class HeadOfficeGUI extends JFrame  {
 
 	static JTextArea txtMachine = new JTextArea();
 	static JTextArea txtitem = new JTextArea();
-	static JTextArea txttransaction = new JTextArea();
+	static JTextArea usageTXT = new JTextArea();
 	
 	JLabel LocLBL = new JLabel("Location");
 	JLabel IpLbl = new JLabel("IP");
 	
 	public static JButton refreshCons = new JButton("Refresh");
+	
+	//Usage Stats
+	JLabel LocationLbl = new JLabel("Location");
+	JLabel canLbl = new JLabel("Cans");
+	JLabel crateLbl = new JLabel("Crates");
+	JLabel glassbttlLbl = new JLabel("<html>Glass<br/>Bottles</html>");
+	JLabel PlasticbttleLbl = new JLabel("<html>Plastic<br/>Bottles</html>");
+	JLabel PolyBagLbl = new JLabel("<html>Polythene<br/>Bags</html>");
+	JLabel PapperbapLbl = new JLabel("<html>Paper<br/>Bags</html>");
+	JLabel TotItemsLbl = new JLabel("Total");
+	
 	
 	
 	//Administration 
@@ -153,13 +164,19 @@ public class HeadOfficeGUI extends JFrame  {
 	}
 	
 	
-	public HeadOfficeGUI() {
+	public HeadOfficeGUI()  {
 		super();
-		initialize();
+		try {
+			initialize();
+			
+		} catch (FileNotFoundException e) {
+
+			e.printStackTrace();
+		}
 	
 	}
 
-	private void initialize() {
+	private void initialize() throws FileNotFoundException {
 		HeadQuarterFrame = new JFrame();
 		HeadQuarterFrame.setTitle("Recycling Inc. Head Office");
 		HeadQuarterFrame.setResizable(false);
@@ -223,12 +240,41 @@ public class HeadOfficeGUI extends JFrame  {
 		tabbedPane.addTab("Usage Summary", null, panel_1, null);
 		panel_1.setLayout(null);
 		panel_1.setBackground(Color.gray);
-		txttransaction.setEditable(false);
+		usageTXT.setEditable(false);
+		usageTXT.setText(new StatsHO().getUsage());
 		
-		txttransaction.setForeground(Color.black);
-		txttransaction.setBackground(Color.white);
-		txttransaction.setBounds(10, 11, 774, 450);
-		panel_1.add(txttransaction);
+//		JLabel LocationLbl = new JLabel("Location");
+//		JLabel canLbl = new JLabel("Cans");
+//		JLabel crateLbl = new JLabel("Crates");
+//		JLabel glassbttlLbl = new JLabel("Glass Bottles");
+//		JLabel PlasticbttleLbl = new JLabel("Plastic Bottles");
+//		JLabel PolyBagLbl = new JLabel("Polythene Bags");
+//		JLabel PapperbapLbl = new JLabel("Paper Bags");
+//		JLabel TotItemsLbl = new JLabel("Total");
+//		
+		
+		panel_1.add(LocationLbl);
+		panel_1.add(canLbl);
+		panel_1.add(crateLbl);
+		panel_1.add(glassbttlLbl);
+		panel_1.add(PlasticbttleLbl);
+		panel_1.add(PolyBagLbl);
+		panel_1.add(PapperbapLbl);
+		panel_1.add(TotItemsLbl);
+		
+		LocationLbl.setBounds(10, 20, 70, 30);
+		canLbl.setBounds(80, 20, 80, 30);
+		crateLbl.setBounds(160, 20, 80, 30);
+		glassbttlLbl.setBounds(260, 20, 80, 30);
+		PlasticbttleLbl.setBounds(345, 20, 80, 30);
+		PolyBagLbl.setBounds(425, 20, 80, 30);
+		PapperbapLbl.setBounds(520, 20, 80, 30);
+		TotItemsLbl.setBounds(600, 20, 80, 30);
+		
+		usageTXT.setForeground(Color.black);
+		usageTXT.setBackground(Color.white);
+		usageTXT.setBounds(10, 50, 774, 450);
+		panel_1.add(usageTXT);
 		
 		
 		//Administration Tab

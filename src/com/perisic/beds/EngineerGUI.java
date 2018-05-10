@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -26,6 +27,7 @@ public class EngineerGUI extends JFrame implements ActionListener {
 	String currentUser;
 	JButton Rst = new JButton("Empty Recycling Machine");
 	JButton Stats = new JButton("Statistics");
+	JButton chngLoc = new JButton("Change Location");
 	JTextArea EngTA = new JTextArea();
 	
 	
@@ -35,7 +37,7 @@ public class EngineerGUI extends JFrame implements ActionListener {
 		super();
 		RGG = rg;
 		currentUser = user;
-		setSize(320, 380);
+		setSize(320, 400);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);	
 		JPanel panel = new JPanel(); 
 		panel.setLayout(null);
@@ -50,6 +52,9 @@ public class EngineerGUI extends JFrame implements ActionListener {
 		Stats.setBounds(10,300, 300, 30);
 		Stats.addActionListener(this);
 		
+		panel.add(chngLoc);
+		chngLoc.setBounds(10,350, 300,30);
+		chngLoc.addActionListener(this);
 		JLabel Welcomemsg = new JLabel("Hello "+currentUser+"!");
 		panel.add(Welcomemsg);
 		Welcomemsg.setBounds(10, 10, 200, 20);
@@ -84,5 +89,12 @@ public class EngineerGUI extends JFrame implements ActionListener {
 			 */
 			EngTA.setText(StatsHub.printStat());
 		}
+		else if(e.getSource().equals(chngLoc))
+		{
+			String newLocation = JOptionPane.showInputDialog("Please enter the name of the new location");
+			RGG.changeLoc(newLocation);
+			
+		}
+		
 	}
 }

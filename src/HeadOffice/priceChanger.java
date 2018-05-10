@@ -1,11 +1,9 @@
-package HeadOffice.HOTesting;
+package HeadOffice;
 
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
-import HeadOffice.PricingManager;
 
 
 /**

@@ -3,13 +3,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import HeadOffice.HOTesting.*;
 import HeadOffice.Stats.StatsHO;
 
 public class HeadOffice implements ActionListener {
 	
-	//int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag, countPolythenebag;
-	//HeadOfficeGUITesting Ho;
+
 	static HeadOfficeGUI Ho = new HeadOfficeGUI();
 	String  RMurl = "http://localHost:1300/RPC2";
 	
@@ -22,13 +20,6 @@ public StatsHO statistics = new StatsHO();
 		return sessionCookie;
 	}
 	
-//	public void priceUpdation()
-//	{
-//		PricingManager PriceMng = new PricingManager();
-//		PriceMng.getPrices();
-//		PriceMng.sendPrices();
-//		System.out.println("HO function");
-//	}
 	
 	public static void startServers()
 	{

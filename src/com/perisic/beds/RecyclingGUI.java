@@ -103,6 +103,13 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		timer1.scheduleAtFixedRate(task1, 1000,1000);
 		
 	}
+	/*
+	 * Change the location of the machine
+	 */
+	public void changeLoc(String newLoc)
+	{
+		location = newLoc;
+	}
 	
 	
 	/**

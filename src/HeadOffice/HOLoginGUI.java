@@ -12,8 +12,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import HeadOffice.HOTesting.HeadOfficeGUI;
-
 /**
  * A Simple Graphical User Interface for the Recycling Machine.
  * @author devaka

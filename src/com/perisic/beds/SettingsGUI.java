@@ -31,7 +31,7 @@ public class SettingsGUI extends JFrame implements ActionListener {
 	
 	public SettingsGUI(RecyclingGUI rcg) {
 		
-		super();
+		super("Engineer Login");
 		RG = rcg;
 		setSize(400, 250);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);	
