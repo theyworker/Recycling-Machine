@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import HeadOffice.HOTesting.HeadOfficeGUITesting;
+import HeadOffice.HOTesting.HeadOfficeGUI;
 
 /**
  * A Simple Graphical User Interface for the Recycling Machine.
@@ -26,10 +26,10 @@ public class HOLoginGUI extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	JTextArea usrta = new JTextArea();
 	JTextArea passta = new JTextArea();
-	HeadOfficeGUITesting HO;
+	HeadOfficeGUI HO;
 	JButton lgin = new JButton("Login");
 	
-	public HOLoginGUI(HeadOfficeGUITesting HOGUI) {
+	public HOLoginGUI(HeadOfficeGUI HOGUI) {
 		
 		super("Recycling Inc. Head Office");
 		this.HO = HOGUI;

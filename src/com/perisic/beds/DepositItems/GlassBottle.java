@@ -11,13 +11,8 @@ public class GlassBottle extends Bottle {
 	 * This is Bottle class, a sub-class of Deposit Item
 	 */
 	public GlassBottle() { 
-//		try {
-//			value = ItemReader.getValueOf("glassbottle");
-//		} catch (Exception e) {
-//			ConsoleLog.printlog("Unable to get values from the server");
-//			e.printStackTrace();
+
 			value = CurrentPrices.getGlassbottlePrice();
-		// }
 		name = "Glass Bottle";
 	}
 }

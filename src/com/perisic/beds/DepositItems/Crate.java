@@ -13,13 +13,9 @@ public class Crate extends DepositItem {
 	 * 
 	 */
 	public Crate() { 
-//		try {
-//			value = ItemReader.getValueOf("crate");
-//		} catch (Exception e) {
-//			ConsoleLog.printlog("Unable to get values from the server");
-//			e.printStackTrace();
+
 			value = CurrentPrices.getCratePrice();
-		// }
+	
 		name = "Crate";
 	}
 }

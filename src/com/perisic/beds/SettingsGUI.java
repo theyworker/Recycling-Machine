@@ -62,14 +62,11 @@ public class SettingsGUI extends JFrame implements ActionListener {
 	
 	}
 	
-//	public void fortesting (String us, String psw)
-//	{
-//		this.setVisible(false);
-//		   EngineerGUI EngGUI = new EngineerGUI(RG,us);
-//		   EngGUI.setVisible(true);
-//	}
-	
-	
+	/**
+	 * Validates the login details entered into the settings login.
+	 * @param us
+	 * @param psw
+	 */
 	public void Loginatmpt(String us, String psw)
 	{
 	

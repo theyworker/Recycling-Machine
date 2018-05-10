@@ -13,11 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import com.j256.twofactorauth.TimeBasedOneTimePasswordUtil;
-/**
- * 
- * @author Marc Conrad
- *
- */
+
 public class Enable2FAGUI extends JFrame implements ActionListener  {
 
 	/**
@@ -116,6 +112,8 @@ public class Enable2FAGUI extends JFrame implements ActionListener  {
 		
 		}
 	}
+	
+	
 	
 	public void twofactorGenerate(String username) throws GeneralSecurityException 
 	{

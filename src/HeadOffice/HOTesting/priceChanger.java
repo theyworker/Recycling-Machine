@@ -46,7 +46,7 @@ public class priceChanger extends JFrame implements ActionListener  {
 	JButton updtPrices = new JButton("Update Prices");
 	
 
-	public priceChanger(final HeadOfficeGUITesting Ho) {
+	public priceChanger(final HeadOfficeGUI Ho) {
 		super("Update Prices");
 
 		setSize(300, 440);

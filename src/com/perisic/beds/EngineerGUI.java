@@ -13,7 +13,7 @@ import com.perisic.beds.Stats.StatsHub;
 
 
 /**
- * A Simple Graphical User Interface for the Engineer to clear the Recycling Machine.
+ * A Graphical User Interface for the Engineer to clear the Recycling Machine.
  * @author devaka
  *
  */

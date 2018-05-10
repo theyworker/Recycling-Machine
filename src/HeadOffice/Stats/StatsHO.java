@@ -17,7 +17,7 @@ import org.apache.xmlrpc.XmlRpcException;
 
 import HeadOffice.HOLoginGUI;
 import HeadOffice.HeadOffice;
-import HeadOffice.HOTesting.HeadOfficeGUITesting;
+import HeadOffice.HOTesting.HeadOfficeGUI;
 /**
  * This class keeps track of the statistics of the entire system
  * @author devaka

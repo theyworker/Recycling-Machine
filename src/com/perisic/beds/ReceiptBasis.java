@@ -5,6 +5,7 @@ import com.perisic.beds.DepositItems.DepositItem;
 import com.perisic.beds.Stats.StatsHub; 
 
 /**
+ * This class records all the deposits from a particular user and this object is used for receipt generation.
  * @author Marc Conrad
  *
  */
@@ -15,6 +16,7 @@ public class ReceiptBasis {
 	private Vector<DepositItem> myItems = new Vector<DepositItem>();
 	int vecIndx=-1;
 	/**
+	 * Adding an item into the Receipt Basis
 	 * @param item
 	 */
 	public void addItem(DepositItem item) { 
@@ -23,6 +25,10 @@ public class ReceiptBasis {
 		vecIndx = item.number;
 	}
 	
+	/**
+	 * Removing an item from the receipt basis
+	 * @return temp
+	 */
 	public DepositItem removeLastItem()
 	{
 		if(vecIndx!=-1)
@@ -39,7 +45,8 @@ public class ReceiptBasis {
 	}
 	
 	/**
-	 * @return
+	 * Computes the sum of all the items inside the receipt basis object, prior to printing a receipt. 
+	 * @return receipt
 	 */
 	public String computeSum() { 
 		String receipt = ""; 

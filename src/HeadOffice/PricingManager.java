@@ -26,6 +26,9 @@ public class PricingManager {
 	static File statFile = new File("/home/devaka/workspace/Recycling Machine/src/HeadOffice/prices.txt"); // add the file here
 	
 	
+	/**
+	 * Reads the text files that stores all the pricing
+	 */
 	public void getPrices()	
 	{
 
@@ -53,6 +56,11 @@ public class PricingManager {
 	    
 	}
 	
+	/**
+	 * Changes the values of the items and saves into the text file
+	 * @param item
+	 * @param newVal
+	 */
 	public void changeValue(String item,int newVal) //this method should be called in the Head office Interface to change values
 	{
 		if(item.equals("Can"))
@@ -81,6 +89,9 @@ public class PricingManager {
 		}
 	}
 	
+	/**
+	 * Saves the pricing data into the text file
+	 */
 	public void SaveStats()
 	{
 		PrintWriter writer;
@@ -95,12 +106,19 @@ public class PricingManager {
 			writer.println(GlassBottlevalue);
 			
 			writer.close();
-		} catch (FileNotFoundException e) {
+		}
+		
+		catch (FileNotFoundException e)
+		
+		{
 			e.printStackTrace();
 		}
 		
 	}
-	
+	/**
+	 * Broadcasts the prices 
+	 * @param ip
+	 */
 	public void sendPrices(String ip)
 	{
 		System.out.println("Sending the prices");
@@ -114,7 +132,7 @@ public class PricingManager {
 			   params.add(Integer.toString(PaperBagvalue));
 			   params.add(Integer.toString(PlasticBottlevalue));
 			   params.add(Integer.toString(GlassBottlevalue));
-			   Object result = server.execute("pricing.updatePrices", params);
+			   server.execute("pricing.updatePrices", params);
 
 			   }
 			   

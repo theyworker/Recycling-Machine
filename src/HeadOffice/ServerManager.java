@@ -4,7 +4,11 @@ import org.apache.xmlrpc.WebServer;
 
 import HeadOffice.Stats.StatsHO;
 
-
+/**
+ * Runs the XMLRPC servers
+ * @author devaka
+ *
+ */
 public class ServerManager {
 
 

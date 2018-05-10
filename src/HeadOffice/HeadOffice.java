@@ -10,14 +10,14 @@ public class HeadOffice implements ActionListener {
 	
 	//int countcan, countcrate, countglassbottle, countplasticbottle, countpaperbag, countPolythenebag;
 	//HeadOfficeGUITesting Ho;
-	static HeadOfficeGUITesting Ho = new HeadOfficeGUITesting();
+	static HeadOfficeGUI Ho = new HeadOfficeGUI();
 	String  RMurl = "http://localHost:1300/RPC2";
 	
 public StatsHO statistics = new StatsHO();
 
 	public String newConnection(String loc,String ip) {
 		recyclingMachine newRM = new recyclingMachine(loc,ip);
-		HeadOfficeGUITesting.addConnection(newRM);
+		HeadOfficeGUI.addConnection(newRM);
 		String sessionCookie =  newRM.setCookie();
 		return sessionCookie;
 	}
@@ -59,13 +59,13 @@ public StatsHO statistics = new StatsHO();
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource().equals(HeadOfficeGUITesting.CreateUser))
+		if(e.getSource().equals(HeadOfficeGUI.CreateUser))
 		{
 			CreateNewUserGUI cnu = new CreateNewUserGUI();
 			cnu.setVisible(true);
 		}
 		
-		else if(e.getSource().equals(HeadOfficeGUITesting.UpdatePriceBtn))
+		else if(e.getSource().equals(HeadOfficeGUI.UpdatePriceBtn))
 		{
 			//priceUpdation();
 			priceChanger pC = new priceChanger(Ho);
@@ -73,7 +73,7 @@ public StatsHO statistics = new StatsHO();
 			}
 		
 		
-		else if (e.getSource().equals(HeadOfficeGUITesting.control))
+		else if (e.getSource().equals(HeadOfficeGUI.control))
 		{
 			String userIP = Ho.usrIP.getText();
 			if(userIP.isEmpty()) {

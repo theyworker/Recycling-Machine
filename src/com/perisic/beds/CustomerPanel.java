@@ -8,6 +8,7 @@ package com.perisic.beds;
 
 /**
  * This is the class that enables end-user to interact with the system.
+ * 
  */
 public class CustomerPanel {
 	DepositItemReceiver receiver = null; 
@@ -18,7 +19,7 @@ public class CustomerPanel {
 		this.receiver = new DepositItemReceiver(prnt);
 		
 	}
-	/**
+	/**This method should be called from any interface that the user is able to deposit items.
 	 * @param slot 
 	 */
 	public void itemReceived(int slot) { 
@@ -50,32 +51,55 @@ public class CustomerPanel {
 			receiver.printError("The Recycling Machine has reached the maximum weight! \n Please try again in the next sessions.");
 		}
 	}
-
+/**
+ * This method is called to print a receipt on to the user interface.
+ */
 	public void printReceipt() { 
 		receiver.printReceipt();
 	}
+	
+	/**
+	 * Returns the current weight of the items that have already been deposited into the machine.
+	 * @return getTotalW()
+	 */
 	public double getTW()
 	{
 		return receiver.getTotalW();
 	}
+	
+	/**
+	 * Returns the current size of the items that have already been deposited into the machine.
+	 * @return getTotalS()
+	 */
 	public double getTS()
 	{
 		return receiver.getTotalS();
 	}
 	
+	/**
+	 * Returns the number of items inside the machine at that moment
+	 * @return numOfItems
+	 */
 	public int getNumofItems()
 	{
 		return numOfItems;
 	}
 	
+	/**
+	 * If the user clears after depositing some items, they will be deducted from the total number of items.
+	 * @param amountclred
+	 */
 	public void correctionofNumItem(int amountclred)
 	{
 		numOfItems -= amountclred;
 	}
 	
+	/**
+	 * Removes the last added item by the user.
+	 */
 	public void removeLastItem()
 	{
-		numOfItems--;
+		numOfItems--; //deducts the numofItems by 1
 		receiver.removeLastItem();
 	}
 }

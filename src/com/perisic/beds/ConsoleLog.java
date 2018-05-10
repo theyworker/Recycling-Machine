@@ -3,11 +3,16 @@ package com.perisic.beds;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-
+/**
+ * Manages the log of the Recycling Machine to ensure the security and the compliance of the system.
+ * 
+ * @author devaka
+ *
+ */
 public class ConsoleLog {
 	
 /**
- * This class prints logs on the console with a time stamp and is called everywhere there is a event.
+ * Prints logs on the console with a time stamp and is called everywhere there is a digital event.
  * @param logmsg
  */
 	public static void printlog(String logmsg) 

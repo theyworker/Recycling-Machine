@@ -8,7 +8,7 @@ import com.perisic.beds.DepositItems.PaperBag;
 import com.perisic.beds.DepositItems.PlasticBottle;
 import com.perisic.beds.DepositItems.PolytheneBag;
 
-/**
+/**Takes all deposits into account, from the customer panel.
  * @author Marc Conrad
  *
  */
@@ -16,25 +16,29 @@ public class DepositItemReceiver {
 	ReceiptBasis theReceiptBasis = null; 
 	PrinterInterface Printer1 = null;
 	
-	double TotW=0;
-	double TotS=0;
+	double TotW=0; // total weight
+	double TotS=0; // total size
 	
-	int numofRcpts=0;
+	int numofRcpts=0; // number of receipts
 	
-//	int TotW;
-//	int TotS;
+	/**
+	 * Sends a request to print the receipt.
+	 * @param pi
+	 */
 	public DepositItemReceiver(PrinterInterface pi) {
 		super();
 		this.Printer1 = pi;
 	}
-	/**
+	/**Creates a new Receipt Basis object.
 	 * 
 	 */
 	public void createReceiptBasis() { 
 		theReceiptBasis = new ReceiptBasis(); 
 	}
-	/**
+	/** Upon the insertion of an item, the type of the item is determined through the slot that the item has been entered into.
 	 * @param slot
+	 * @param Tw
+	 * @param Ts
 	 */
 	public void classifyItem(int slot, double Tw, double Ts) { 
 		DepositItem item = null; 
@@ -131,17 +135,27 @@ public class DepositItemReceiver {
 		return TotS;
 	}
 	
+	/**
+	 * Returns the total number of receipts
+	 * @return numofRcptss
+	 */
 	public int getTotalRcpts()
 	{
 		return numofRcpts;
 	}
 	
+	/**
+	 * Resets factors on request to clear or after a receipt.
+	 */
 	public void clearReceipt() {
 		theReceiptBasis = null;
 		TotW=0;
 		TotS=0;
 	}
 	
+	/*
+	 * Removing the last added item by the user, and deducting all the variables that were incremented upon the insertion off that particular item.
+	 */
 	public void removeLastItem()
 	{
 		DepositItem temp = theReceiptBasis.removeLastItem();

@@ -23,7 +23,7 @@ import com.perisic.beds.Pricing.CurrentPrices;
 import com.perisic.beds.Stats.StatsHub;
 
 /**
- * A Simple Graphical User Interface for the Recycling Machine.
+ * A Graphical User Interface for the Recycling Machine.
  * @author Marc Conrad
  *
  */
@@ -33,19 +33,19 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	 */
 	private static final long serialVersionUID = 546723911453041610L;//unique code for each object
 	CustomerPanel thepanel = new CustomerPanel(this);
-	int webserver = 1300;
+	int webserver = 1300; // port to be used for the XMLRPC server
 	RecyclingGUIActions RGUIA = new RecyclingGUIActions(thepanel,this);
 	static JTextArea JT =new JTextArea(2,2); //text area object embedded in the GUI with 15 rows and 30 columnsNot
 	JScrollPane scrll = new JScrollPane(JT);
 	
-	static JProgressBar pbw;
-	static JProgressBar pbsz;
+	static JProgressBar pbw; // progress bar to show the Weight Deposited
+	static JProgressBar pbsz; // progress bar to show the Size Deposited
 	
 	static JLabel currentvaltxt = new JLabel("£ 0.0");
 	static int currentVal = 0;
 	
-	String location = "Colombo";
-	String sessionCookie = null;
+	String location = "Colombo"; // the location of the Recycling Machine
+	String sessionCookie = null; // a cookie will be generated upon the connection to the Head Office
 	
 	
 	CurrentPrices Cp;
@@ -75,7 +75,9 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		}
 	};
 	
-	
+	/**
+	 * Resets the current value and the progress bars in the user interface
+	 */
 	public void resetFunctions() 
 	{
 		pbw.setValue((int) thepanel.getTW());
@@ -85,10 +87,16 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		currentvaltxt.setText("£ "+currentVal);
 	}
 	
+	/***
+	 * Sets seconds to 0
+	 */
 	public static void resetTimer() {
 		secs = 0;
 	}
 
+	/**
+	 * Starts the timer
+	 */
 	public void start() {
 		//timer
 		
@@ -96,11 +104,19 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 		
 	}
 	
+	
+	/**
+	 * Requests print a receipt
+	 */
 	public void print(String str)
 	{
 		JT.setText(str);
 	}
 	
+	/**
+	 * Updated the current value shown in the user interface, when new item is added
+	 * @param change
+	 */
 	static void updateCurrentVal(int change) 
 	{
 		currentVal += change;
@@ -331,6 +347,10 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 			   }
 	}
 	
+	/**
+	 * Stars the XMLRPC servers
+	 * @param gui
+	 */
 	public void runServer(Object gui) {
 		WebServer server = new WebServer(webserver);
 	  	 server.addHandler("machine", gui);
@@ -338,6 +358,10 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 	   	 server.start();
 	}
 	
+	/**
+	 * Shuts down the machine
+	 * @return
+	 */
 	public String restartMachine() {
 		
 			System.out.println("System is shutting down");
@@ -345,6 +369,11 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 			return "System restarted!";
 		
 	}
+	
+	/**
+	 * Allows Head office admins to clear a receipt remotely
+	 * @return
+	 */
 	public String clearScreenRemotely()
 	{
 		
@@ -355,6 +384,10 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 
 	}
 	
+	/**
+	 * Shows the number of items
+	 * @return getNumofItems
+	 */
 	public String getNumofItems()
 	{
 			return Integer.toString(thepanel.getNumofItems());

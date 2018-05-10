@@ -15,7 +15,9 @@ public class CurrentPrices {
 
 	static File priceFile = new File("/home/devaka/workspace/Recycling Machine/src/com/perisic/beds/Pricing/currPrices.txt"); // add the file here
 
-	
+	/**
+	 * 
+	 */
 	public void loadPrices()	
 	{
 
