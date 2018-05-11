@@ -72,7 +72,7 @@ public class HOLoginGUI extends JFrame implements ActionListener {
 			if(usercode.equals(currentCode)) 
 			{
 				this.setVisible(false);	
-				HO.setVisible(true);
+				HO.setVisb();
 			}
 			else 
 			{

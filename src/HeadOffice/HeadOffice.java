@@ -5,8 +5,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import HeadOffice.Stats.StatsHO;
 
+
+
+
 public class HeadOffice implements ActionListener {
-	
+
 
 	static HeadOfficeGUI Ho = new HeadOfficeGUI();
 	String  RMurl = "http://localHost:1300/RPC2";
@@ -28,22 +31,16 @@ public StatsHO statistics = new StatsHO();
 		SvrMng.runServer();
 	}
 	
+	
 
 	
 	
 	
 	public static void main(String[] args) {
-		
-		Ho.setVisb();
-	//~~~~~~~~~~~~~~~~~~~~~~~~~ Logins Disabled for testing
-	//	HOLoginGUI HOLogin = new HOLoginGUI(HOGUI);
-	//HOLogin.setVisible(true);
-		
-		startServers();
-		
-		
-
-		
+	
+		HOLoginGUI HOLogin = new HOLoginGUI(Ho);
+		HOLogin.setVisible(true);
+		startServers();	
 		
 	}
 

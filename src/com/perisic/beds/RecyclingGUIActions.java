@@ -24,14 +24,6 @@ public class RecyclingGUIActions implements ActionListener {
 		RecyclingGUI.resetTimer();
 		StatsHub.sendStats(RGUI.sessionCookie);
 		
-		/*
-		*For testing purposes:
-			 *1 for Can
-			 *2 for Glass Bottle
-			 *3 for Crate
-			 *4 for Paper Bag
-			 *5 forPlastic Bottle
-			 */
 
 		if(e.getSource().equals(RecyclingGUI.slot1))
 		{

@@ -335,11 +335,7 @@ public class RecyclingGUI extends JFrame implements PrinterInterface  {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-//			   
-//			   params.add("yo");
-//			   params.add("ye");
-//			 
-			   
+	   
 			   Object result = server.execute("hello.newConnection", params);
 			   sessionCookie = result.toString();
 			   System.out.println(sessionCookie);
